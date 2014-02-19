@@ -88,8 +88,31 @@ for ring1 in everyPossible[0]:
             #print "\t\t", ring3
             for ring4 in everyPossible[3]:
                 #print"\t\t\t", ring4
+
+                #TODO: THE BELOW DOESN'T WORK, MAKE IT WORK!
                 #check to see if this game is valid (no duplicates in the columns)
-                #add each column into a set, if all columns are 4 then we have a WINNER!   This is because sets don't allow duplicates
+
+                column1 = Set([ring1[0], ring2[0], ring3[0], ring4[0]])
+                column2 = Set([ring1[1], ring2[1], ring3[1], ring4[1]])
+                column3 = Set([ring1[2], ring2[2], ring3[2], ring4[2]])
+                column4 = Set([ring1[3], ring2[3], ring3[3], ring4[3]])
+
+                if len(column1) == 4 and len(column2) == 4 and len(column3) == 4 and len(column4) == 4:
+                    print "WINNER"
+
+                '''
+                columns = []
+                for idx in range(4):
+                    columns.append( set([ring1[idx], ring2[idx], ring3[idx], ring4[idx]]) )
+                print columns
+
+                for column in columns:
+                    if len(column) == 4:
+                        print "WINNNNNNER"
+                '''
+
+                '''
+                #add each column into a set, if all columns are length 4 then we have a WINNER!   This is because sets don't allow duplicates
                 badFlag = 0
                 for idx in range(4):
                     column1 = Set([ring1[0], ring2[0], ring3[0], ring4[0]])
@@ -97,13 +120,14 @@ for ring1 in everyPossible[0]:
                     column3 = Set([ring1[2], ring2[2], ring3[2], ring4[2]])
                     column4 = Set([ring1[3], ring2[3], ring3[3], ring4[3]])
 
-                    if len(column1) == 4 and len(column2) == 4 and len(column3) == 4 and len(column4) == 4:
+                    if len(column1) >= 4 and len(column2) >= 4 and len(column3) >= 4 and len(column4) >= 4:
                         print "WINNER"
                         print ring1
                         print ring2
                         print ring3
                         print ring4
                         exit()
+                '''
 
 
 
