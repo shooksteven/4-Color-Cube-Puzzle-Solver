@@ -1,4 +1,7 @@
 '''
+    NOTE: THIS IS INCOMPLETE!!!
+    The axis method is probably more efficient and easy to comprehend.
+
     @uthor: Steven Keith Shook II
     Date: 2/14/2014
     Purpose: Brute force the 4-cube color puzzle from a top down approach.
@@ -49,6 +52,7 @@ def printCube(cube):
 
 #initialize the cubes
 cubes = []
+#                  [front,      left,       bottom,         right,          back,       top]
 cubes.append(cube(Colors.red, Colors.green, Colors.blue, Colors.yellow, Colors.green, Colors.red))
 cubes.append(cube(Colors.green, Colors.green, Colors.yellow, Colors.red, Colors.yellow, Colors.blue))
 cubes.append(cube(Colors.red, Colors.blue, Colors.blue, Colors.yellow, Colors.yellow, Colors.red))
