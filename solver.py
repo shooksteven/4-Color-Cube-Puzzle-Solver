@@ -1,6 +1,6 @@
-from enum import Enum
 
 
-color = Enum('Color', 'blue green red yellow')
+class Colors:
+    blue, green, red, yellow = range(4)
 
-print red
+print Colors.red
