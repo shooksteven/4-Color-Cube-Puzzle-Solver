@@ -12,6 +12,8 @@
 __author__ = 'sshook'
 
 from collections import deque
+from sets import Set
+
 
 class Colors:
     blue, green, red, yellow = range(4)
@@ -88,15 +90,20 @@ for ring1 in everyPossible[0]:
                 #print"\t\t\t", ring4
                 #check to see if this game is valid (no duplicates in the columns)
                 #add each column into a set, if all columns are 4 then we have a WINNER!   This is because sets don't allow duplicates
-                badFlag = 0;
+                badFlag = 0
                 for idx in range(4):
-                    column = set([ring1[idx], ring2[idx], ring3[idx], ring4[idx]])
-                    print column
-                    if len(column) != 4:
-                        badFlag = 1
-                        break
-                if badFlag != 1:
-                    print "WINNER"
+                    column1 = Set([ring1[0], ring2[0], ring3[0], ring4[0]])
+                    column2 = Set([ring1[1], ring2[1], ring3[1], ring4[1]])
+                    column3 = Set([ring1[2], ring2[2], ring3[2], ring4[2]])
+                    column4 = Set([ring1[3], ring2[3], ring3[3], ring4[3]])
+
+                    if len(column1) == 4 and len(column2) == 4 and len(column3) == 4 and len(column4) == 4:
+                        print "WINNER"
+                        print ring1
+                        print ring2
+                        print ring3
+                        print ring4
+                        exit()
 
 
 
