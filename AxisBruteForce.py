@@ -45,36 +45,58 @@ cubes[3].addAxis(Colors.blue, Colors.yellow, Colors.yellow, Colors.yellow)
 #convert the deque back into a list
 #print list(cubes[0].axis[0])
 
-'''
-#Prints all axis for each cube
-for i, cube in enumerate(cubes):
-    print "\nCube ", (i+1)
-    for axis in cube.axis:
-        #convert the deque back into a list
-        print list(axis)
-'''
+#contains every possible solution for each cube
+everyPossible = []
 
-
+#Generate all possible positions for each cube
 for i, cube in enumerate(cubes):
-    print "\nCube ", (i+1)
-    for axis in cube.axis:
-        for i in range(len(axis)):
+
+    #this will hold every possible rotation for this cube
+    possibleSolutions = []
+    #print "\nCube ", (i+1)
+
+    #for each axis (2 of them) rotate the cube to find every possible position
+    for k, axis in enumerate(cube.axis):
+        #print "\taxis ", (k+1)
+        #rotate the appropriate number of times and then add it to the possibleSolutions array
+        for j in range(len(axis)):
             #rotate the axis by one
-            cubes[0].axis[0].rotate(1)
+            axis.rotate(1)
             #convert the deque back into a list and print
-            print list(cubes[0].axis[0])
+            #print "\t\t", list(axis)
+            possibleSolutions.append(list(axis))
+    everyPossible.append(possibleSolutions)
+
+#print out every possible solution for each cube
+print "\nNumber of cubes: ", len(everyPossible)
+for i, cubeSolutions in enumerate(everyPossible):
+    print "\nCube ", (i + 1)
+    for k, solution in enumerate(cubeSolutions):
+        print "\t", solution
 
 
-'''
-#rotate the axis
-#print list(cubes[0].axis[0])
-for i in range(len(cubes[0].axis[0])):
-    #rotate the axis by one
-    cubes[0].axis[0].rotate(1)
-    #convert the deque back into a list and print
-    print list(cubes[0].axis[0])
-'''
+#run every solution against the other cubes
+print "\n\nComputing final solution!"
 
+for ring1 in everyPossible[0]:
+    #print ring1
+    for ring2 in everyPossible[1]:
+        #print "\t", ring2
+        for ring3 in everyPossible[2]:
+            #print "\t\t", ring3
+            for ring4 in everyPossible[3]:
+                #print"\t\t\t", ring4
+                #check to see if this game is valid (no duplicates in the columns)
+                #add each column into a set, if all columns are 4 then we have a WINNER!   This is because sets don't allow duplicates
+                badFlag = 0;
+                for idx in range(4):
+                    column = set([ring1[idx], ring2[idx], ring3[idx], ring4[idx]])
+                    print column
+                    if len(column) != 4:
+                        badFlag = 1
+                        break
+                if badFlag != 1:
+                    print "WINNER"
 
 
 
