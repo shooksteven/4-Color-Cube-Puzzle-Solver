@@ -31,17 +31,21 @@ cubes = []
 for i in range(4):
     cubes.append(cube())
 
-cubes[0].addAxis(Colors.green, Colors.yellow, Colors.red, Colors.red)
-cubes[0].addAxis(Colors.blue, Colors.yellow, Colors.yellow, Colors.red)
+cubes[0].addAxis(Colors.blue, Colors.yellow, Colors.red, Colors.green)
+cubes[0].addAxis(Colors.yellow, Colors.yellow, Colors.yellow, Colors.green)
+cubes[0].addAxis(Colors.blue, Colors.yellow, Colors.red, Colors.yellow)
 
-cubes[1].addAxis(Colors.green, Colors.green, Colors.red, Colors.yellow)
-cubes[1].addAxis(Colors.blue, Colors.green, Colors.red, Colors.yellow)
+cubes[1].addAxis(Colors.green, Colors.blue, Colors.green, Colors.red)
+cubes[1].addAxis(Colors.yellow, Colors.blue, Colors.blue, Colors.red)
+cubes[1].addAxis(Colors.green, Colors.blue, Colors.green, Colors.yellow)
 
-cubes[2].addAxis(Colors.red, Colors.green, Colors.blue, Colors.green)
-cubes[2].addAxis(Colors.yellow, Colors.green, Colors.blue, Colors.green)
+cubes[2].addAxis(Colors.yellow, Colors.green, Colors.green, Colors.red)
+cubes[2].addAxis(Colors.blue, Colors.green, Colors.red, Colors.red)
+cubes[2].addAxis(Colors.yellow, Colors.red, Colors.green, Colors.blue)
 
-cubes[3].addAxis(Colors.blue, Colors.yellow, Colors.red, Colors.yellow)
-cubes[3].addAxis(Colors.blue, Colors.yellow, Colors.yellow, Colors.yellow)
+cubes[3].addAxis(Colors.yellow, Colors.red, Colors.red, Colors.green)
+cubes[3].addAxis(Colors.blue, Colors.red, Colors.yellow, Colors.green)
+cubes[3].addAxis(Colors.yellow, Colors.yellow, Colors.red, Colors.blue)
 
 
 #convert the deque back into a list
@@ -97,8 +101,8 @@ for ring1 in everyPossible[0]:
                 column3 = Set([ring1[2], ring2[2], ring3[2], ring4[2]])
                 column4 = Set([ring1[3], ring2[3], ring3[3], ring4[3]])
 
-                if len(column1) == 4 and len(column2) == 4 and len(column3) == 4 and len(column4) == 4:
-                    print "WINNER"
+                #if len(column1) == 4 and len(column2) == 4 and len(column3) == 4 and len(column4) == 4:
+                #    print "WINNER"
 
                 '''
                 columns = []
@@ -111,7 +115,7 @@ for ring1 in everyPossible[0]:
                         print "WINNNNNNER"
                 '''
 
-                '''
+
                 #add each column into a set, if all columns are length 4 then we have a WINNER!   This is because sets don't allow duplicates
                 badFlag = 0
                 for idx in range(4):
@@ -127,7 +131,7 @@ for ring1 in everyPossible[0]:
                         print ring3
                         print ring4
                         exit()
-                '''
+
 
 
 
