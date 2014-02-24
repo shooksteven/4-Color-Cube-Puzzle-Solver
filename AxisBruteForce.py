@@ -59,27 +59,28 @@ for i, cube in enumerate(cubes):
 
     #this will hold every possible rotation for this cube
     possibleSolutions = []
-    #print "\nCube ", (i+1)
+    print "\nCube ", (i + 1)
 
     #for each axis (2 of them) rotate the cube to find every possible position
     for k, axis in enumerate(cube.axis):
-        #print "\taxis ", (k+1)
+        print "\taxis ", (k + 1)
         #rotate the appropriate number of times and then add it to the possibleSolutions array
         for j in range(len(axis)):
             #rotate the axis by one
             axis.rotate(1)
             #convert the deque back into a list and print
-            #print "\t\t", list(axis)
+            print "\t\t", list(axis)
             possibleSolutions.append(list(axis))
     everyPossible.append(possibleSolutions)
 
 #print out every possible solution for each cube
+'''
 print "\nNumber of cubes: ", len(everyPossible)
 for i, cubeSolutions in enumerate(everyPossible):
     print "\nCube ", (i + 1)
     for k, solution in enumerate(cubeSolutions):
         print "\t", solution
-
+'''
 
 #run every solution against the other cubes
 print "\n\nComputing final solution!"
@@ -101,8 +102,9 @@ for ring1 in everyPossible[0]:
                 column3 = Set([ring1[2], ring2[2], ring3[2], ring4[2]])
                 column4 = Set([ring1[3], ring2[3], ring3[3], ring4[3]])
 
-                #if len(column1) == 4 and len(column2) == 4 and len(column3) == 4 and len(column4) == 4:
-                #    print "WINNER"
+                if len(column1) == 4 and len(column2) == 4 and len(column3) == 4 and len(column4) == 4:
+                    print "WINNER"
+                    exit()
 
                 '''
                 columns = []
@@ -115,7 +117,7 @@ for ring1 in everyPossible[0]:
                         print "WINNNNNNER"
                 '''
 
-
+                '''
                 #add each column into a set, if all columns are length 4 then we have a WINNER!   This is because sets don't allow duplicates
                 badFlag = 0
                 for idx in range(4):
@@ -131,7 +133,7 @@ for ring1 in everyPossible[0]:
                         print ring3
                         print ring4
                         exit()
-
+                '''
 
 
 
