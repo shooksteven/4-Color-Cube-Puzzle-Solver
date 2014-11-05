@@ -16,7 +16,11 @@ from sets import Set
 
 
 class Colors:
-    blue, green, red, yellow = range(4)
+    #blue, green, red, yellow = range(4)
+    blue = 'b'
+    green = 'g'
+    red = 'r'
+    yellow = 'y'
 
 class cube:
     def __init__(self):
@@ -52,7 +56,7 @@ cubes[3].addAxis(Colors.yellow, Colors.yellow, Colors.red, Colors.blue)
 #print list(cubes[0].axis[0])
 
 #contains every possible solution for each cube
-everyPossible = []
+cubePossibilities = []
 
 #Generate all possible positions for each cube
 for i, cube in enumerate(cubes):
@@ -61,7 +65,7 @@ for i, cube in enumerate(cubes):
     possibleSolutions = []
     print "\nCube ", (i + 1)
 
-    #for each axis (2 of them) rotate the cube to find every possible position
+    #for each axis (3 of them) rotate the cube to find every possible position
     for k, axis in enumerate(cube.axis):
         print "\taxis ", (k + 1)
         #rotate the appropriate number of times and then add it to the possibleSolutions array
@@ -71,38 +75,52 @@ for i, cube in enumerate(cubes):
             #convert the deque back into a list and print
             print "\t\t", list(axis)
             possibleSolutions.append(list(axis))
-    everyPossible.append(possibleSolutions)
+    cubePossibilities.append(possibleSolutions)
 
 #print out every possible solution for each cube
-'''
-print "\nNumber of cubes: ", len(everyPossible)
-for i, cubeSolutions in enumerate(everyPossible):
+
+print "\nNumber of cubes: ", len(cubePossibilities)
+for i, cubeSolutions in enumerate(cubePossibilities):
     print "\nCube ", (i + 1)
     for k, solution in enumerate(cubeSolutions):
         print "\t", solution
-'''
+
 
 #run every solution against the other cubes
 print "\n\nComputing final solution!"
 
-for ring1 in everyPossible[0]:
+for ring1 in cubePossibilities[0]:
     #print ring1
-    for ring2 in everyPossible[1]:
+    for ring2 in cubePossibilities[1]:
         #print "\t", ring2
-        for ring3 in everyPossible[2]:
+        for ring3 in cubePossibilities[2]:
             #print "\t\t", ring3
-            for ring4 in everyPossible[3]:
+            for ring4 in cubePossibilities[3]:
                 #print"\t\t\t", ring4
 
                 #TODO: THE BELOW DOESN'T WORK, MAKE IT WORK!
                 #check to see if this game is valid (no duplicates in the columns)
 
-                column1 = Set([ring1[0], ring2[0], ring3[0], ring4[0]])
-                column2 = Set([ring1[1], ring2[1], ring3[1], ring4[1]])
-                column3 = Set([ring1[2], ring2[2], ring3[2], ring4[2]])
-                column4 = Set([ring1[3], ring2[3], ring3[3], ring4[3]])
+                columns = list()
+                for idx in range(4):
+                    columns.append( Set([ring1[idx], ring2[idx], ring3[idx], ring4[idx]]) )
 
-                if len(column1) == 4 and len(column2) == 4 and len(column3) == 4 and len(column4) == 4:
+                column0 = Set([ring1[0], ring2[0], ring3[0], ring4[0]])
+                column1 = Set([ring1[1], ring2[1], ring3[1], ring4[1]])
+                column2 = Set([ring1[2], ring2[2], ring3[2], ring4[2]])
+                column3 = Set([ring1[3], ring2[3], ring3[3], ring4[3]])
+
+                print "\n========"
+                for idx in range(4):
+                    print " ".join( ( str(ring1[idx]), str(ring2[idx]), str(ring3[idx]), str(ring4[idx]) ) ) +\
+                          "   " + str(columns[idx])
+                    print "- - - - -"
+                print "========"
+
+                # print column0
+                exit()
+
+                if len(column0) == 4 and len(column1) == 4 and len(column2) == 4 and len(column3) == 4:
                     print "WINNER"
                     exit()
 
